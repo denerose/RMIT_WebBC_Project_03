@@ -1,0 +1,22 @@
+const cellSplit = /(?<!\\),/;
+const lineSplit = /(?<!\\)\r\n|(?<!\\)\n/;
+
+/**
+ * Parses read File object into an array of objects
+ * @param {Blob} file
+ * @returns {array<object>} data
+ */
+export function parseCSV(file) {
+	const lines = file.split(lineSplit);
+	const headers = lines[0].split(cellSplit);
+	const data = [];
+	for (let i = 1; i < lines.length; i++) {
+		const obj = {};
+		const currentline = lines[i].split(cellSplit);
+		for (let j = 0; j < headers.length; j++) {
+			obj[headers[j]] = currentline[j];
+		}
+		data.push(obj);
+	}
+	return data;
+}

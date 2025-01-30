@@ -1,0 +1,55 @@
+import { Book } from './book';
+
+export class Library {
+	constructor() {
+		this.books = new Map();
+	}
+
+	addBook(book) {
+		if (book instanceof Book === false) {
+			console.warn('book must be an instance of Book');
+			return false;
+		}
+		this.books.set(book.callNum, book);
+		return true;
+	}
+
+	removeBook(callNum) {
+		if (!this.books.has(callNum)) {
+			console.warn('book not found');
+			return false;
+		}
+		this.books.delete(callNum);
+		return true;
+	}
+
+	getBook(callNum) {
+		return this.books.get(callNum);
+	}
+
+	getAllBooks() {
+		return this.books;
+	}
+
+	getBookCount() {
+		return this.books.size;
+	}
+
+	getReadBooks() {
+		return Array.from(this.books.values()).filter(
+			(book) => book.readPercentage === 100
+		);
+	}
+
+	getUnreadBooks() {
+		return Array.from(this.books.values()).filter(
+			(book) => book.readPercentage === 0
+		);
+	}
+
+	getInProgressBooks() {
+		return Array.from(this.books.values()).filter(
+			(book) => book.readPercentage > 0 && book.readPercentage < 100
+		);
+	}
+}

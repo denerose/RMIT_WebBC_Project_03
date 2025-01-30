@@ -3,6 +3,7 @@
 import { displayBooks } from './display.js';
 import { Library } from './library.js';
 import { Book } from './book.js';
+import { parseCSV } from './files.js';
 
 const library = new Library();
 
@@ -33,4 +34,23 @@ document.getElementById('add-book-form').addEventListener('submit', (e) => {
 
 	library.addBook(book);
 	displayBooks(library);
+});
+
+document.getElementById('upload-btn').addEventListener('click', () => {
+	const fileInput = document.getElementById('file-input');
+	if (fileInput.files.length === 0) {
+		window.alert('No file uploaded');
+		return;
+	}
+	const file = fileInput.files[0];
+	const reader = new FileReader();
+	reader.onload = (e) => {
+		const data = parseCSV(e.target.result);
+		data.forEach((book) => {
+			const newBook = new Book(book);
+			library.addBook(newBook);
+		});
+		displayBooks(library);
+	};
+	reader.readAsText(file);
 });

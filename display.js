@@ -39,6 +39,7 @@ function newBookElement(book, libraryRef) {
 		text: `${book.readPercentage}% read`,
 	});
 	const pubDate = newElement('p', { text: `Published: ${book.pubDate}` });
+	const callNum = newElement('p', { text: `Call Number: ${book.callNum}` });
 	const delBtn = newElement('button', { text: 'X', classes: 'delBtn' });
 
 	delBtn.addEventListener('click', () => {
@@ -52,6 +53,7 @@ function newBookElement(book, libraryRef) {
 	bookEl.appendChild(readPercentage);
 	bookEl.appendChild(pubDate);
 	bookEl.appendChild(delBtn);
+	bookEl.appendChild(callNum);
 
 	return bookEl;
 }

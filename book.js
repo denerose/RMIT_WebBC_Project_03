@@ -7,7 +7,7 @@ export class Book {
 		this.pubDate = props.pubDate || 'No Date';
 		this.genre = props.genre || 'No Genre';
 		this.nonFiction = props.nonFiction || false;
-		this.callNum = props.callNum || newUUID();
+		this.callNum = props.callNum || this.newUUID();
 	}
 
 	setReadPercentage(percentage) {

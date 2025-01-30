@@ -42,8 +42,18 @@
                     <input type="number" id="pages" name="pages" required>
                 </div>
                 <div>
+                    <!-- TODO: add FF/cross-browser compat version with select inputs -->
                     <label for="pub-date">Publication Date:</label>
-                    <input type="date" id="pub-date" name="pubDate" required>
+                    <input type="month" id="pub-date" name="pubDate" required>
+                </div>
+                <div>
+                    <!-- TODO: make a select -->
+                    <label for="genre">Genre:</label>
+                    <input type="text" id="genre" name="genre" value="General">
+                </div>
+                <div>
+                    <label for="nonFiction">Non-Fiction:</label>
+                    <input type="checkbox" id="nonFiction" name="nonFiction">
                 </div>
                 <div>
                     <label for="read">Read:</label>

@@ -1,4 +1,4 @@
-import { Book } from './book';
+import { Book } from './book.js';
 
 /**
  * Returns new HTML element with properties ready to be appended to the DOM
@@ -15,7 +15,7 @@ function newElement(elType, props) {
 	}
 
 	if (props.classes && Array.isArray(props.classes)) {
-		classes.forEach((c) => element.classList.add(c));
+		props.classes.forEach((c) => element.classList.add(c));
 	} else if (typeof props.classes === 'string') {
 		element.classList.add(props.classes);
 	}

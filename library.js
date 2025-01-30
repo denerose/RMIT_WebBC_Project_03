@@ -1,8 +1,13 @@
-import { Book } from './book';
+import { Book } from './book.js';
 
 export class Library {
 	constructor() {
 		this.books = new Map();
+		this.callNum = 0;
+	}
+
+	getNextCallNum() {
+		return `xyz-${this.callNum++}`;
 	}
 
 	addBook(book) {

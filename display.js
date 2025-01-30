@@ -27,7 +27,7 @@ function newElement(elType, props) {
 	return element;
 }
 
-function newBookElement(book) {
+function newBookElement(book, libraryRef) {
 	const bookEl = newElement('div', {
 		classes: ['book', 'card'],
 		id: book.callNum,
@@ -39,12 +39,19 @@ function newBookElement(book) {
 		text: `${book.readPercentage}% read`,
 	});
 	const pubDate = newElement('p', { text: `Published: ${book.pubDate}` });
+	const delBtn = newElement('button', { text: 'X', classes: 'delBtn' });
+
+	delBtn.addEventListener('click', () => {
+		libraryRef.removeBook(book.callNum);
+		displayBooks(libraryRef);
+	});
 
 	bookEl.appendChild(title);
 	bookEl.appendChild(author);
 	bookEl.appendChild(pages);
 	bookEl.appendChild(readPercentage);
 	bookEl.appendChild(pubDate);
+	bookEl.appendChild(delBtn);
 
 	return bookEl;
 }
@@ -54,7 +61,7 @@ export function displayBooks(library) {
 	booksContainer.replaceChildren();
 
 	library.getAllBooks().forEach((book) => {
-		const bookEl = newBookElement(book);
+		const bookEl = newBookElement(book, library);
 		booksContainer.appendChild(bookEl);
 	});
 }

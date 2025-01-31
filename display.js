@@ -75,24 +75,40 @@ function drawBooks(library) {
 	const canvas = document.getElementById('book-canvas');
 	const ctx = canvas.getContext('2d');
 	const books = library.getAllBooks();
-	const bookWidth = canvas.width / books.size;
-	const bookHeight = 110;
+	let bookWidth = canvas.width / books.size;
+	let bookHeight = 100;
 
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 	let count = 0;
+
+	if (books.size === 0) {
+		ctx.fillStyle = '#333333';
+		ctx.textAlign = 'center';
+		ctx.fillText('No books to display', canvas.width / 2, canvas.height / 2);
+	}
+
+	if (books.size < 15) {
+		canvas.style.setProperty('width', books.size / 0.15 + 'vw');
+		bookWidth = canvas.width / books.size;
+	} else {
+		canvas.style.setProperty('width', '100%');
+	}
 
 	books.forEach((book) => {
 		const x = bookWidth * count++;
 		const y = 0;
 		ctx.fillStyle = bookColours[count % bookColours.length];
 		ctx.fillRect(x, y, bookWidth, bookHeight);
+		ctx.strokeStyle = 'black';
+		ctx.strokeRect(x, y, bookWidth, bookHeight);
 		ctx.save();
 		ctx.translate(x + 10, y + 50);
 		ctx.rotate(-Math.PI / 2);
-		ctx.fillStyle = 'black';
+		ctx.fillStyle = '#333333CC';
 		ctx.textAlign = 'center';
-		ctx.fillText(book.title, 0, 0);
+		ctx.font = '10px serif';
+		ctx.fillText(book.title, 0, 0, canvas.height - 10);
 		ctx.restore();
 	});
 }

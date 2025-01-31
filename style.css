@@ -19,5 +19,6 @@
 #book-canvas {
     width: 100%;
     max-height: 120px;
+    min-height: 10vh;
     background-color: var(--dark);
 }

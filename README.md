@@ -16,7 +16,7 @@ A simple web-app that allows the user to manage a personal book collection. Book
 |Adaptation of provided code|Adapt the Canvas->Modules->Week 1-5...->CSV reader example code to load the primary data records of your website. Minimum of two CSV columns required. Code must load an arbitrary number of lines in the CSV file. No need for validation of CSV data.|`files.js` has file handler methods to import the csv, `script.js` adds an eventListener to `'upload-btn'` which turns uploaded data into `Book` objects and add them to a `Map` inside an instance of the `Library` class|10.2 - Objects|
 |10.7 Exception handling|Must throw and catch but not both (on the same exception) from within the same function.|||
 |11.1 Timers|clear… methods optional.|||
-|11.2 Modifying CSS with JavaScript|remove… and delete… methods optional.|CSS for the `book-canvas` is modified to make the Canvas width smaller if there are fewer than 10 books in the library; see `drawBook()` function in `display.js`. |11.5 Canvas|
+|11.2 Modifying CSS with JavaScript|remove… and delete… methods optional.|The canvas width is adjusted id there are fewer than 15 books; see `drawBook()` function in `display.js`|11.5 Canvas|
 |11.3 Form validation|One example from each heading (e.g. 'Validating form input with JavaScript…', etc.)|||
 |11.4 Browser differences: JavaScript|One example adequate. Not necessary for whole website.|||
 |11.5 Canvas drawing|Either rectangle/path/arc required (Note: Draw based on primary data stored in a Map for full marks). Graph example adaptation permitted. Other drawing methods optional.|`#book-canvas` displays rects for each book, see `drawBook()` function in `display.js`.|10.2 Objects && 11.2 JS for CSS|
@@ -28,5 +28,5 @@ A simple web-app that allows the user to manage a personal book collection. Book
 |12.6 Getting started with jQuery|One example of jQuery + good practices for whole of 12.6.|||
 |12.7 [JQuery] Selectors|One selector adequate for whole of 12.7.|||
 |12.8 [JQuery] Events|One example each from 'ready', 'mouse', 'keyboard/form' adequate.|||
-|12.10 DOM manipulation|One add, one remove for the whole of 12.10.|||
+|12.10 [JQuery] DOM manipulation|One add, one remove for the whole of 12.10.|||
 |12.3 Closures|Only an explanation using your code during presentation adequate.|||

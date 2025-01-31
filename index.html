@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Little Home Library</title>
 
+    <!-- Import the jQuery library from Google CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
     <link rel="modulepreload" href="library.js">
     <link rel="modulepreload" href="display.js">
     <link rel="modulepreload" href="book.js">
@@ -63,6 +66,9 @@
         </section>
         <section id="library">
             <h2>Your Books</h2>
+            <canvas id="book-canvas" height="100">
+                Your browser does not support the HTML5 canvas element.
+            </canvas>
             <div id="book-list"></div>
         </section>
     </main>

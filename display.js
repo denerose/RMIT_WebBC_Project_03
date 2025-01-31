@@ -1,5 +1,18 @@
 import { Book } from './book.js';
 
+const bookColours = [
+	'blue',
+	'red',
+	'green',
+	'yellow',
+	'purple',
+	'orange',
+	'pink',
+	'brown',
+	'gray',
+	'white',
+];
+
 /**
  * Returns new HTML element with properties ready to be appended to the DOM
  * @param {string} elType element type e.g. 'div', 'p', 'h1'
@@ -58,6 +71,32 @@ function newBookElement(book, libraryRef) {
 	return bookEl;
 }
 
+function drawBooks(library) {
+	const canvas = document.getElementById('book-canvas');
+	const ctx = canvas.getContext('2d');
+	const books = library.getAllBooks();
+	const bookWidth = canvas.width / books.size;
+	const bookHeight = 110;
+
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+	let count = 0;
+
+	books.forEach((book) => {
+		const x = bookWidth * count++;
+		const y = 0;
+		ctx.fillStyle = bookColours[count % bookColours.length];
+		ctx.fillRect(x, y, bookWidth, bookHeight);
+		ctx.save();
+		ctx.translate(x + 10, y + 50);
+		ctx.rotate(-Math.PI / 2);
+		ctx.fillStyle = 'black';
+		ctx.textAlign = 'center';
+		ctx.fillText(book.title, 0, 0);
+		ctx.restore();
+	});
+}
+
 export function displayBooks(library) {
 	const booksContainer = document.getElementById('book-list');
 	booksContainer.replaceChildren();
@@ -66,4 +105,6 @@ export function displayBooks(library) {
 		const bookEl = newBookElement(book, library);
 		booksContainer.appendChild(bookEl);
 	});
+
+	drawBooks(library);
 }

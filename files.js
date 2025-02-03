@@ -8,6 +8,9 @@ const lineSplit = /(?<!\\)\r\n|(?<!\\)\n/;
  */
 export function parseCSV(file) {
 	const lines = file.split(lineSplit);
+	if (lines.length < 2) {
+		throw new Error('File must have at least 2 lines');
+	}
 	const headers = lines[0].split(cellSplit);
 	const data = [];
 	for (let i = 1; i < lines.length; i++) {

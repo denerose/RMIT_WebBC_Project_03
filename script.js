@@ -45,12 +45,16 @@ document.getElementById('upload-btn').addEventListener('click', () => {
 	const file = fileInput.files[0];
 	const reader = new FileReader();
 	reader.onload = (e) => {
-		const data = parseCSV(e.target.result);
-		data.forEach((book) => {
-			const newBook = new Book(book);
-			library.addBook(newBook);
-		});
-		displayBooks(library);
+		try {
+			const data = parseCSV(e.target.result);
+			data.forEach((book) => {
+				const newBook = new Book(book);
+				library.addBook(newBook);
+			});
+			displayBooks(library);
+		} catch (error) {
+			window.alert(error);
+		}
 	};
 	reader.readAsText(file);
 });

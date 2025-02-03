@@ -7,7 +7,19 @@ export class Book {
 		this.pubDate = props.pubDate || 'No Date';
 		this.genre = props.genre || 'No Genre';
 		this.nonFiction = props.nonFiction || false;
-		this.callNum = props.callNum || this.newUUID();
+		this.callNum = props.callNum || newUUID();
+
+		// inner function to generate a unique id if call-num is not provided
+		function newUUID() {
+			// checking that browser supports crypto
+			if (self && self.crypto) {
+				return crypto.randomUUID();
+			} else {
+				console.log('self.crypto not available');
+				// if crypto is not available, use Date.now() and Math.random to generate a unique id
+				return Date.now().toString(36) + '-' + Math.floor(Math.random() * 9999);
+			}
+		}
 	}
 
 	setReadPercentage(percentage) {
@@ -20,16 +32,5 @@ export class Book {
 
 	unread() {
 		this.setReadPercentage(0);
-	}
-
-	newUUID() {
-		// checking that browser supports crypto
-		if (self && self.crypto) {
-			return crypto.randomUUID();
-		} else {
-			console.log('self.crypto not available');
-			// if crypto is not available, use Date.now() and Math.random to generate a unique id
-			return Date.now().toString(36) + '-' + Math.floor(Math.random() * 9999);
-		}
 	}
 }

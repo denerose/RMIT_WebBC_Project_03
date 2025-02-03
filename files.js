@@ -12,9 +12,9 @@ export function parseCSV(file) {
 	const data = [];
 	for (let i = 1; i < lines.length; i++) {
 		const obj = {};
-		const currentline = lines[i].split(cellSplit);
+		const currentLine = lines[i].split(cellSplit);
 		for (let j = 0; j < headers.length; j++) {
-			obj[headers[j]] = currentline[j];
+			obj[headers[j]] = currentLine[j];
 		}
 		data.push(obj);
 	}

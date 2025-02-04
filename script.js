@@ -1,11 +1,13 @@
 'use strict';
 
-import { displayBooks } from './display.js';
+import { displayBooks, drawTitle } from './display.js';
 import { Library } from './library.js';
 import { Book } from './book.js';
 import { parseCSV } from './files.js';
 
 const library = new Library();
+
+drawTitle();
 
 document.getElementById('show-book-form').addEventListener('click', () => {
 	document.getElementById('add-book').classList.toggle('hidden');
@@ -58,3 +60,5 @@ document.getElementById('upload-btn').addEventListener('click', () => {
 	};
 	reader.readAsText(file);
 });
+
+$(document).ready(function () {});

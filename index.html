@@ -19,7 +19,9 @@
 </head>
 <body>
     <header>
-        <h1>My Little Home Library</h1>
+        <canvas id="title-canvas" height="80" width="1000">
+            <h1>My Little Home Library</h1>
+        </canvas>
         <nav>
             <button id="show-book-form">New Book</button>
             <form id="upload-form">
@@ -66,7 +68,7 @@
         </section>
         <section id="library">
             <h2>Your Books</h2>
-            <canvas id="book-canvas" height="100">
+            <canvas id="book-canvas" height="100" width="1000">
                 Your browser does not support the HTML5 canvas element.
             </canvas>
             <div id="book-list"></div>

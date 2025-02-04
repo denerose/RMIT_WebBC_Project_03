@@ -27,6 +27,7 @@
     max-height: 120px;
     min-height: 10vh;
     background-color: var(--dark);
+    image-rendering: pixelated;
 }
 
 #book-list {
@@ -46,4 +47,12 @@
     margin: 5px;
     padding: 5px;
 
+}
+
+#title-canvas {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--dark);
+    width: 100%;
+    image-rendering: crisp-edges;
 }

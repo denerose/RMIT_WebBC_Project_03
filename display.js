@@ -5,12 +5,17 @@ const bookColours = [
 	'red',
 	'green',
 	'yellow',
+	'darkslategray',
 	'purple',
 	'orange',
+	'darkgoldenrod',
 	'pink',
 	'brown',
 	'gray',
 	'white',
+	'rebeccapurple',
+	'darkorange',
+	'darkolivegreen',
 ];
 
 /**
@@ -105,8 +110,8 @@ function drawBooks(library) {
 		ctx.rotate(-Math.PI / 2);
 		ctx.fillStyle = '#333333CC';
 		ctx.textAlign = 'center';
-		ctx.font = '10px serif';
-		ctx.fillText(book.title, 0, 0, canvas.height - 10);
+		ctx.font = '30px serif';
+		ctx.fillText(book.title, 0, bookWidth - bookWidth / 2, canvas.height - 10);
 		ctx.restore();
 	});
 }
@@ -121,4 +126,34 @@ export function displayBooks(library) {
 	});
 
 	drawBooks(library);
+}
+
+export function drawTitle() {
+	const canvas = document.getElementById('title-canvas');
+	const ctx = canvas.getContext('2d');
+	let upScale = 1.1;
+	let count = 0;
+
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	ctx.fillStyle = bookColours[count % bookColours.length];
+	ctx.font = '30px serif';
+	ctx.fillText('My Little Home Library', 0, 40 / upScale, canvas.width / 2);
+	ctx.strokeText('My Little Home Library', 0, 40 / upScale, canvas.width / 2);
+
+	function animateTitle() {
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		ctx.save();
+
+		ctx.scale(upScale, upScale);
+		ctx.fillStyle = bookColours[++count % bookColours.length];
+		ctx.fillText('My Little Home Library', 0, 40 / upScale, canvas.width / 2);
+		ctx.strokeStyle = bookColours[(count - 1) % bookColours.length];
+		ctx.strokeText('My Little Home Library', 0, 40 / upScale, canvas.width / 2);
+
+		upScale < 1.9 ? (upScale += 0.1) : (upScale = 1.1);
+
+		ctx.restore();
+	}
+
+	setInterval(animateTitle, 1000);
 }

@@ -155,5 +155,9 @@ export function drawTitle() {
 		ctx.restore();
 	}
 
-	setInterval(animateTitle, 1000);
+	const interval = setInterval(animateTitle, 1000);
+
+	return function stopAnimation() {
+		clearInterval(interval);
+	};
 }

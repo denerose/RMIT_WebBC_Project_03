@@ -7,7 +7,9 @@ import { parseCSV } from './files.js';
 
 const library = new Library();
 
-drawTitle();
+const stop = drawTitle();
+
+document.getElementById('stop-animation').addEventListener('click', stop);
 
 document.getElementById('show-book-form').addEventListener('click', () => {
 	document.getElementById('add-book').classList.toggle('hidden');
@@ -61,4 +63,27 @@ document.getElementById('upload-btn').addEventListener('click', () => {
 	reader.readAsText(file);
 });
 
-$(document).ready(function () {});
+$(document).ready(function () {
+	$('#pub-date-default').show();
+	$('#pub-date-fallback').hide();
+
+	const test = document.createElement('input');
+
+	try {
+		test.type = 'month';
+	} catch (e) {
+		console.log(e.description);
+	}
+
+	if (test.type === 'text') {
+		$('#pub-date-default').hide();
+		$('#pub-date').removeAttr('required');
+		$('#pub-date-fallback').show();
+		$('#month-select').attr('required', 'required');
+		$('#pub-year').attr('required', 'required');
+	}
+});
+
+window.onload = () => {
+	document.querySelector('#add-book-form').reset();
+};

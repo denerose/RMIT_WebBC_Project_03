@@ -22,6 +22,7 @@
         <canvas id="title-canvas" height="80" width="1000">
             <h1>My Little Home Library</h1>
         </canvas>
+        <button id="stop-animation">Stop Animation</button>
         <nav>
             <button id="show-book-form">New Book</button>
             <form id="upload-form">
@@ -46,10 +47,33 @@
                     <label for="pages">Pages:</label>
                     <input type="number" id="pages" name="pages" required>
                 </div>
-                <div>
-                    <!-- TODO: add FF/cross-browser compat version with select inputs -->
+                <div id="pub-date-default">
                     <label for="pub-date">Publication Date:</label>
                     <input type="month" id="pub-date" name="pubDate" required>
+                </div>
+                <div id="pub-date-fallback">
+                    <p>Publication Date:</p>
+                    <span>
+                        <label for="month-select">Month:</label>
+                        <select id="month-select" name="pubMonth">
+                          <option selected>January</option>
+                          <option>February</option>
+                          <option>March</option>
+                          <option>April</option>
+                          <option>May</option>
+                          <option>June</option>
+                          <option>July</option>
+                          <option>August</option>
+                          <option>September</option>
+                          <option>October</option>
+                          <option>November</option>
+                          <option>December</option>
+                        </select>
+                      </span>
+                      <span>
+                        <label for="pub-year">Year:</label>
+                        <input type="text" id="pub-year" name="pubYear" pattern="[\d]{4}" length="4" value="1900">
+                      </span>
                 </div>
                 <div>
                     <!-- TODO: make a select -->

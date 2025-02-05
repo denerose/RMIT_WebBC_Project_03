@@ -57,4 +57,12 @@ export class Library {
 			(book) => book.readPercentage > 0 && book.readPercentage < 100
 		);
 	}
+
+	sortBooksByTitle() {
+		return new Map(
+			[...this.books.entries()].sort((a, b) => {
+				return a.title > b.title;
+			})
+		);
+	}
 }

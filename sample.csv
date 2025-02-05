@@ -1,6 +1,21 @@
 ﻿title,author,pages,readPercentage,pubDate,genre,nonFiction
-Cats Take Over The World,Meow St Mew,204,0,2020-02,Animals,TRUE
 Pride & Predjudice,Jane Austen,400,95,1813-01,Romance,FALSE
-Another Book,Some Lady,599,3,2021-03,Stuff,TRUE
 Jane Eyre,Charlotte Brontë,624,50,1847-10,Romance,FALSE
+Little Women,Louisa May Alcott,449,100,1868-09,General Fiction,FALSE
 The Pragmatic Programmer,Andy Hunt and Dave Thomas,325,100,1999-10,Computing,TRUE
+The C Programming Language,Brian Kernighan and Dennis Ritchie,288,0,1978-02,Computing,TRUE
+Design Patterns,Erich Gamma and Richard Helm and Ralph Johnson and John Vlissides,395,100,1994-10,Computing,TRUE
+The Elements of Style,William Strunk Jr. and E.B. White,105,100,1918-01,Writing,TRUE
+Incredible Vegan Ice Cream,Deena Jalal,160,100,2021-06,Cooking,TRUE
+Artisan Vegan Cheese,Miyoko Schinner,192,100,2012-08,Cooking,TRUE
+Veganomicon,Isa Chandra Moskowitz and Terry Hope Romero,336,100,2007-11,Cooking,TRUE
+The Joy of Cooking,Irma S. Rombauer and Marion Rombauer Becker and Ethan Becker,1200,100,1931-12,Cooking,TRUE
+This Much is True,Miriam Margolyes,320,100,2021-10,Biography,
+Bartender's Guide,Trader Vic,400,100,1947-01,Cooking,TRUE
+Dune,Frank Herbert,412,100,1965-06,Science Fiction,FALSE
+The Hitchhiker's Guide to the Galaxy,Douglas Adams,216,100,1979-10,Science Fiction,FALSE
+The Left Hand of Darkness,Ursula K. Le Guin,304,100,1969-06,Science Fiction,FALSE
+The Ship Who Sang,Anne McCaffrey,256,100,1969-06,Science Fiction,FALSE
+Australian Birds,John Gould,300,100,1848-01,Birds,TRUE
+The Australian Bird Guide,CISRO,576,100,2017-01,Birds,TRUE
+The Compact Australian Bird Guide,CISRO,304,100,2017-01,Birds,TRUE

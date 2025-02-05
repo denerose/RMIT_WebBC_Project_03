@@ -29,7 +29,10 @@ document.getElementById('add-book-form').addEventListener('submit', (e) => {
 	const pubDate =
 		formData.get('pubDate') ||
 		`${formData.get('pubYear')}-${formData.get('pubMonth')}`;
-	const genre = formData.get('genre');
+	const genre = formData.get('nonFiction')
+		? formData.get('subject')
+		: formData.get('genre');
+	const nonFiction = formData.get('nonFiction');
 	const callNum = library.getNextCallNum();
 
 	const book = new Book({
@@ -39,6 +42,7 @@ document.getElementById('add-book-form').addEventListener('submit', (e) => {
 		readPercentage,
 		pubDate,
 		genre,
+		nonFiction,
 		callNum,
 	});
 
@@ -88,6 +92,31 @@ $(document).ready(function () {
 		$('#month-select').attr('required', 'required');
 		$('#pub-year').attr('required', 'required');
 	}
+
+	$('#non-fiction-genres').hide();
+
+	$('#nonFiction').change(function () {
+		if (this.checked) {
+			$('#fiction-genres').hide();
+			$('#non-fiction-genres').show();
+		} else {
+			$('#non-fiction-genres').hide();
+			$('#fiction-genres').show();
+		}
+	});
+
+	$('#title-input, #author').on('blur', function () {
+		$(this).val($(this).val().trim());
+		if ($(this).val() === '' || $(this).val().indexOf(',') !== -1) {
+			$(this).addClass('error');
+			if (!$(this).next().hasClass('error-msg')) {
+				$(this).after('<span class="error-msg">Invalid input</span>');
+			}
+		} else {
+			$(this).removeClass('error');
+			$(this).next('.error-msg').remove();
+		}
+	});
 });
 
 window.onload = () => {

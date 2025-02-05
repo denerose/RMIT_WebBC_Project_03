@@ -9,6 +9,8 @@ const library = new Library();
 
 const stop = drawTitle();
 
+const locale = navigator.language;
+
 document.getElementById('stop-animation').addEventListener('click', stop);
 
 document.getElementById('show-book-form').addEventListener('click', () => {
@@ -24,7 +26,10 @@ document.getElementById('add-book-form').addEventListener('submit', (e) => {
 	const author = formData.get('author');
 	const pages = formData.get('pages');
 	const readPercentage = formData.get('readPercentage');
-	const pubDate = formData.get('pubDate');
+	const pubDate =
+		formData.get('pubDate') ||
+		`${formData.get('pubYear')}-${formData.get('pubMonth')}`;
+	const genre = formData.get('genre');
 	const callNum = library.getNextCallNum();
 
 	const book = new Book({
@@ -33,6 +38,7 @@ document.getElementById('add-book-form').addEventListener('submit', (e) => {
 		pages,
 		readPercentage,
 		pubDate,
+		genre,
 		callNum,
 	});
 

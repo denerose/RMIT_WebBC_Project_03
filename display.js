@@ -1,21 +1,51 @@
 import { Book } from './book.js';
 
+const animColours = [
+	'#18005f',
+	'#20005e',
+	'#28005d',
+	'#2f005c',
+	'#37005b',
+	'#3f0059',
+	'#470058',
+	'#4e0057',
+	'#560056',
+	'#5e0055',
+	'#660054',
+	'#6d0053',
+	'#750052',
+];
+
+const titleColours = [
+	'#ffee32',
+	'#ffd90d',
+	'#ffd100',
+	'#fbc501',
+	'#f7b801',
+	'#f3ac01',
+	'#ef9f01',
+	'#eb9302',
+	'#e37902',
+	'#df6c02',
+];
+
 const bookColours = [
-	'blue',
-	'red',
-	'green',
-	'yellow',
-	'darkslategray',
-	'purple',
-	'orange',
-	'darkgoldenrod',
-	'pink',
-	'brown',
-	'gray',
-	'white',
-	'rebeccapurple',
-	'darkorange',
-	'darkolivegreen',
+	'#5f0f40',
+	'#9a031e',
+	'#fb8b24',
+	'#e36414',
+	'#0f4c5c',
+	'#2a9d8f',
+	'#264653',
+	'#287271',
+	'#2a9d8f',
+	'#8ab17d',
+	'#e9c46a',
+	'#efb366',
+	'#f4a261',
+	'#ee8959',
+	'#e76f51',
+	'#e97c61',
 ];
 
 /**
@@ -108,9 +138,9 @@ function drawBooks(library) {
 		ctx.save();
 		ctx.translate(x + 10, y + 50);
 		ctx.rotate(-Math.PI / 2);
-		ctx.fillStyle = bookColours[(pickedColour + 3) % bookColours.length];
+		ctx.fillStyle = titleColours[pickedColour % titleColours.length];
 		ctx.textAlign = 'center';
-		ctx.font = '30px serif';
+		ctx.font = '20px serif';
 		ctx.fillText(book.title, 0, bookWidth - bookWidth / 2, canvas.height - 10);
 		ctx.restore();
 	});
@@ -136,20 +166,35 @@ export function drawTitle() {
 	let count = 0;
 
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
-	ctx.fillStyle = bookColours[count % bookColours.length];
+	ctx.fillStyle = animColours[count % animColours.length];
 	ctx.font = '30px serif';
-	ctx.fillText('My Little Home Library', 0, 40 / upScale, canvas.width / 2);
-	ctx.strokeText('My Little Home Library', 0, 40 / upScale, canvas.width / 2);
+	ctx.fillText('My Little Home Library', 0, 40 / upScale, canvas.width * 0.75);
+	ctx.strokeText(
+		'My Little Home Library',
+		0,
+		40 / upScale,
+		canvas.width * 0.75
+	);
 
 	function animateTitle() {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		ctx.save();
 
 		ctx.scale(upScale, upScale);
-		ctx.fillStyle = bookColours[++count % bookColours.length];
-		ctx.fillText('My Little Home Library', 0, 40 / upScale, canvas.width / 2);
-		ctx.strokeStyle = bookColours[(count - 1) % bookColours.length];
-		ctx.strokeText('My Little Home Library', 0, 40 / upScale, canvas.width / 2);
+		ctx.fillStyle = animColours[++count % animColours.length];
+		ctx.fillText(
+			'My Little Home Library',
+			0,
+			40 / upScale,
+			canvas.width * 0.75
+		);
+		ctx.strokeStyle = animColours[(count - 1) % animColours.length];
+		ctx.strokeText(
+			'My Little Home Library',
+			0,
+			40 / upScale,
+			canvas.width * 0.75
+		);
 
 		if (reverse) {
 			if (upScale < 1.1) {

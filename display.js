@@ -80,10 +80,9 @@ function drawBooks(library) {
 	const books = library.getAllBooks();
 	let bookWidth = canvas.width / books.size;
 	let bookHeight = 100;
+	let count = 0;
 
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-	let count = 0;
 
 	if (books.size === 0) {
 		ctx.fillStyle = '#333333';
@@ -99,16 +98,17 @@ function drawBooks(library) {
 	}
 
 	books.forEach((book) => {
+		const pickedColour = Math.floor(Math.random() * bookColours.length);
 		const x = bookWidth * count++;
 		const y = 0;
-		ctx.fillStyle = bookColours[count % bookColours.length];
+		ctx.fillStyle = bookColours[pickedColour];
 		ctx.fillRect(x, y, bookWidth, bookHeight);
 		ctx.strokeStyle = 'black';
 		ctx.strokeRect(x, y, bookWidth, bookHeight);
 		ctx.save();
 		ctx.translate(x + 10, y + 50);
 		ctx.rotate(-Math.PI / 2);
-		ctx.fillStyle = '#333333CC';
+		ctx.fillStyle = bookColours[(pickedColour + 3) % bookColours.length];
 		ctx.textAlign = 'center';
 		ctx.font = '30px serif';
 		ctx.fillText(book.title, 0, bookWidth - bookWidth / 2, canvas.height - 10);
@@ -132,6 +132,7 @@ export function drawTitle() {
 	const canvas = document.getElementById('title-canvas');
 	const ctx = canvas.getContext('2d');
 	let upScale = 1.1;
+	let reverse = false;
 	let count = 0;
 
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -150,12 +151,26 @@ export function drawTitle() {
 		ctx.strokeStyle = bookColours[(count - 1) % bookColours.length];
 		ctx.strokeText('My Little Home Library', 0, 40 / upScale, canvas.width / 2);
 
-		upScale < 1.9 ? (upScale += 0.1) : (upScale = 1.1);
+		if (reverse) {
+			if (upScale < 1.1) {
+				reverse = false;
+				upScale = 1.1;
+			} else {
+				upScale -= 0.01;
+			}
+		} else {
+			if (upScale > 1.9) {
+				reverse = true;
+				upScale = 1.9;
+			} else {
+				upScale += 0.01;
+			}
+		}
 
 		ctx.restore();
 	}
 
-	const interval = setInterval(animateTitle, 1000);
+	const interval = setInterval(animateTitle, 100);
 
 	return function stopAnimation() {
 		clearInterval(interval);

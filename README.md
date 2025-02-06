@@ -30,3 +30,4 @@ A simple web-app that allows the user to manage a personal book collection. Book
 ## Notes and Citations
 - Month override code based on [MDN type="month" Example](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/month#browser_compatibility).
 - Code for `newElement()` is based on and adapted from code previously submitted.
+- Background pattern CSS from https://css-pattern.com/quatrefoils/

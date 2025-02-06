@@ -22,13 +22,9 @@
         <canvas id="title-canvas" height="80" width="1000">
             <h1>My Little Home Library</h1>
         </canvas>
-        <button id="stop-animation">Stop Animation</button>
         <nav>
-            <button id="show-book-form">New Book</button>
-            <form id="upload-form">
-                <input type="file" id="file-input" accept=".csv" required>
-                <button type="button" id="upload-btn">Upload CSV</button>
-            </form>
+            <button id="stop-animation">Stop Animation</button>
+            <button id="show-book-form">New Book Form</button>
         </nav>
     </header>
     <main>
@@ -43,42 +39,41 @@
                 <div>
                     <label for="author">Author:</label>
                     <input type="text" id="author" name="author" required>
-                    <span id="author-error"></span>
                 </div>
                 <div>
                     <label for="pages">Pages:</label>
                     <input type="number" id="pages" name="pages" required>
-                    <span id="pages-error"></span>
                 </div>
                 <div id="pub-date-default">
                     <label for="pub-date">Publication Date:</label>
                     <input type="month" id="pub-date" name="pubDate" max="2025-01" required>
-                    <span id="pub-date-error"></span>
                 </div>
                 <!-- fallback for browsers that don't support type="month" yet for 11.4 -->
                 <div id="pub-date-fallback">
-                    <span>
-                        <label for="month-select">Month:</label>
-                        <select id="month-select" name="pubMonth">
-                            <option value="01" selected>January</option>
-                            <option value="02">February</option>
-                            <option value="03">March</option>
-                            <option value="04">April</option>
-                            <option value="05">May</option>
-                            <option value="06">June</option>
-                            <option value="07">July</option>
-                            <option value="08">August</option>
-                            <option value="09">September</option>
-                            <option value="10">October</option>
-                            <option value="11">November</option>
-                            <option value="12">December</option>
-                        </select>
-                      </span>
-                      <span>
-                        <label for="pub-year">Year:</label>
-                        <input type="number" id="pub-year" name="pubYear" min="1000" max="2025" length="4" value="1900">
-                      </span>
-                      <span id="pub-date-fallback-error"></span>
+                    <label for="pub-date-fallback">Publication Date:</label>
+                    <div>
+                        <span>
+                            <label for="month-select">Month:</label>
+                            <select id="month-select" name="pubMonth">
+                                <option value="01" selected>January</option>
+                                <option value="02">February</option>
+                                <option value="03">March</option>
+                                <option value="04">April</option>
+                                <option value="05">May</option>
+                                <option value="06">June</option>
+                                <option value="07">July</option>
+                                <option value="08">August</option>
+                                <option value="09">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                        </span>
+                        <span>
+                            <label for="pub-year">Year:</label>
+                            <input type="number" id="pub-year" name="pubYear" min="1000" max="2025" length="4" value="1900">
+                        </span>
+                    </div>
                 </div>
                 <div>
                     <label for="nonFiction">Non-Fiction:</label>
@@ -121,7 +116,22 @@
                     <label for="read">Read:</label>
                     <input type="range" id="read" name="readPercentage" min="0" max="100" value="0">
                 </div>
-                <button type="submit">Add Book</button>
+                <div>
+                    <button type="submit">Add Book</button>
+                </div>
+            </form>
+        </section>
+        <section id="upload-books">
+            <h2>Upload Books</h2>
+            <form id="upload-form">
+                <div>
+                    <label for="file-input">Select a CSV file:</label>
+                    <input type="file" id="file-input" accept=".csv" required>
+                </div>
+                <div>
+                    <button type="button" id="upload-btn">Upload CSV</button>
+                </div>
+            </form>
         </section>
         <section id="library">
             <h2>Your Books</h2>

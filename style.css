@@ -1,11 +1,29 @@
 :root {
-    --light: #f4f4f4;
-    --dark: #333;
+    --light: #f4f4f4CC;
+    --dark: #2f2b3c;
+    --secondary: #5e0055;
     --red: #e76969;
     --light-red: #f8d7da;
     padding: 0;
     margin: 0;
+    color: var(--dark);
 }
+
+html {
+    /* pattern code from: https://css-pattern.com/quatrefoils/ */
+    --s: 60px; /* control the size*/
+    --c1: #b09f79;
+    --c2: #585b72;
+    
+    --_g: #0000 83%,var(--c1) 85% 99%,#0000 101%;
+    background:
+      radial-gradient(27% 29% at right ,var(--_g)) calc(var(--s)/ 2) var(--s),
+      radial-gradient(27% 29% at left  ,var(--_g)) calc(var(--s)/-2) var(--s),
+      radial-gradient(29% 27% at top   ,var(--_g)) 0 calc(var(--s)/ 2),
+      radial-gradient(29% 27% at bottom,var(--_g)) 0 calc(var(--s)/-2)
+      var(--c2);
+    background-size: calc(2*var(--s)) calc(2*var(--s));
+  }
 
 .hidden {
     display: none;
@@ -61,4 +79,81 @@
 .error {
     color: var(--red);
     background-color: var(--light-red);
+}
+
+form {
+    display: grid;
+    gap: 0.5em;
+    grid-template-columns: 1fr;
+}
+
+form > div {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 0.5em;
+    padding: 0.2em;
+}
+
+input, select {
+    padding: 0.5em;
+    margin: 0.5em;
+    border-radius: 5px;
+    border: 1px solid var(--dark);
+    background-color: var(--light);
+}
+
+#pub-date-fallback > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5em;
+}
+
+#pub-date-fallback div > span {
+    width: 100%;
+}
+
+#pub-date-fallback div > span > label {
+    color: var(--secondary);
+}
+
+label {
+    text-align: right;
+    margin: auto 0;
+    font-weight: bold;
+}
+
+button, input[type="submit"], input[type="button"] {
+    padding: 0.5em;
+    margin: 0.5em;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--dark);
+    color: var(--light);
+    cursor: pointer;
+    max-width: 50%;
+}
+
+header {
+    background-color: var(--light);
+    padding: 1em;
+    margin: 2rem;
+    border-radius: 5px;
+}
+
+main {
+    background-color: var(--light);
+    padding: 1em;
+    margin: 2rem;
+    border-radius: 5px;
+}
+
+section {
+    border-bottom: var(--dark) 1px solid;
+}
+
+footer {
+    background-color: var(--light);
+    padding: 1em;
+    margin: 2rem;
+    border-radius: 5px;
 }

@@ -117,6 +117,11 @@ $(document).ready(function () {
 			$(this).next('.error-msg').remove();
 		}
 	});
+
+	// added to demo a 'mouse' event.
+	$('canvas').on('click', () => {
+		console.log(`canvas clicked - a mouse event occurred!`);
+	});
 });
 
 window.onload = () => {

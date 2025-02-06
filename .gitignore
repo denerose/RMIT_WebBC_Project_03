@@ -2,3 +2,4 @@ Project_03.code-workspace
 dist.zip
 .DS_Store
 /dist
+*.zip

@@ -15,7 +15,7 @@
 
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <script type="module" src="script.js" defer></script>
+    <script type="module" src="script.js"></script>
 </head>
 <body>
     <header>
@@ -50,7 +50,7 @@
                 </div>
                 <!-- fallback for browsers that don't support type="month" yet for 11.4 -->
                 <div id="pub-date-fallback">
-                    <label for="pub-date-fallback">Publication Date:</label>
+                    <label>Publication Date:</label>
                     <div>
                         <span>
                             <label for="month-select">Month:</label>
@@ -71,7 +71,7 @@
                         </span>
                         <span>
                             <label for="pub-year">Year:</label>
-                            <input type="number" id="pub-year" name="pubYear" min="1000" max="2025" length="4" value="1900">
+                            <input type="number" id="pub-year" name="pubYear" min="1000" max="2025" value="1900">
                         </span>
                     </div>
                 </div>
@@ -111,7 +111,6 @@
                     </select>
                     <span id="subject-error"></span>
                 </div>  
-                </div>
                 <div>
                     <label for="read">Read:</label>
                     <input type="range" id="read" name="readPercentage" min="0" max="100" value="0">
